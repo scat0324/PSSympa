@@ -18,10 +18,8 @@ param(
 
     [Parameter(Mandatory=$true,HelpMessage="Pass in the result of the 'Get-SympaLogin' function")]
     $Sympa,
-
     [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list you want to remove the member(s) from")]
     [String]$MailingList,
-
     [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to remove from the Mailling list")]
     [Array]$Member
 <#
