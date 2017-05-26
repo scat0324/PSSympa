@@ -3,9 +3,9 @@
 
 <#
 .Synopsis
-   This function gets a login cookie to use with the Sympa mail list server
+   This function gets a login cookie to use with the Sympa mailing list server
 .DESCRIPTION
-   Use this function to login to the Sympa mail list server before calling other functions in this module (like Get-SympaMailListMembers).
+   Use this function to login to the Sympa mailling list server before calling other functions in this module (like Get-SympaMailListMembers).
 .EXAMPLE
    $sympa = Get-SympaLogin -Username test-user@ox.ac.uk -Password cheesypassword1 -WSDL https://web.maillist.ox.ac.uk/ox/wsdl
 #>
