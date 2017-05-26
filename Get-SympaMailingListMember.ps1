@@ -5,9 +5,9 @@
 .Synopsis
    This function returns the members of a Mailing list(s)
 .EXAMPLE
-   Get-SympaMailListMembers -Sympa $Sympa -MailingList queens-it
+   Get-SympaMailingListMember -Sympa $Sympa -MailingList queens-it
 .EXAMPLE
-   Get-SympaMailListMembers -Sympa $Sympa -MailingList @('queens-it','queens-undergrads')
+   Get-SympaMailingListMember -Sympa $Sympa -MailingList @('queens-it','queens-undergrads')
 #>
 
 param(
@@ -23,7 +23,7 @@ param(
     #Create empty collection
     $Output = New-Object System.Collections.ArrayList
 
-    #Loop over the mail lists provided
+    #Loop over the mailing lists provided
     foreach($MailList in $MailingList){
         
         $Results = $Sympa.review("$MailList")
