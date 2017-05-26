@@ -39,7 +39,14 @@ param(
 #>
     #Loop over the member(s) and remove them from the list
     foreach($Address in $Member){
-        $Sympa.del("$MailingList","$Address",'1')
+        try
+        {
+            $Sympa.del("$MailingList","$Address",'1')    
+        }
+        catch
+        {
+            
+        }
     }
 
 }
