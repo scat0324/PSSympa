@@ -23,14 +23,15 @@ param(
     [String]$MailingList,
 
     [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to add to the Mailling list")]
-    [Array]$Member,
-
+    [Array]$Member
+<#
     [Parameter(Mandatory=$false,HelpMessage="Should you notify the user that they are being added to the list, default is no")]
     [ValidateSet("Yes", "No")]
     [String]$Notify = "No"
-
+#>
     )
     
+<#
     #Handle the $Notify paramater converting it into the mess that Sympa understands
     switch ($Notify)
     {
@@ -38,10 +39,11 @@ param(
         'No' {$Alert = "true"}
         Default {$Alert = "true"}
     }
+#>
 
     #Loop over the member(s) and remove them from the list
     foreach($Address in $Member){
-        $Sympa.add("$MailingList","$Address", "","$Alert") | Out-Null
+        $Sympa.add("$MailingList","$Address", "","1")
     }
 
 }

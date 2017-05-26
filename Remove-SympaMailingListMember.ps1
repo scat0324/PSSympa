@@ -3,7 +3,7 @@
 
 <#
 .Synopsis
-   This function removes a member(s) from a Mailing list(s)
+   This function removes a member(s) from a Mailing list
 .EXAMPLE
    Remove the member jim.bob@queens.ox.ac.uk from the mailing list queens-it
 
@@ -22,29 +22,26 @@ param(
     [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list you want to remove the member(s) from")]
     [String]$MailingList,
 
-    [Parameter(Mandatory=$true,HelpMessage="Enter the name of the member(s) you want to remove from the Mailling list")]
-    [Array]$Member,
-
+    [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to remove from the Mailling list")]
+    [Array]$Member
+<#
     [Parameter(Mandatory=$false,HelpMessage="Should you notify the user that they are being removed from the list, default is no")]
     [ValidateSet("Yes", "No")]
     [String]$Notify = "No"
-
+#>
     )
-    
+<#    
     #Handle the $Notify paramater converting it into the mess that Sympa understands
     switch ($Notify)
     {
-        'Yes' {$Alert = "false"}
-        'No' {$Alert = "true"}
-        Default {$Alert = "true"}
+        'Yes' {$Alert = "0"}
+        'No' {$Alert = "1"}
+        Default {$Alert = "1"}
     }
-
-    #Create empty collection
-    $Output = New-Object System.Collections.ArrayList
-
+#>
     #Loop over the member(s) and remove them from the list
     foreach($Address in $Member){
-        $Sympa.del("$MailingList","$Address","$Alert") | Out-Null
+        $Sympa.del("$MailingList","$Address",'1')
     }
 
 }
