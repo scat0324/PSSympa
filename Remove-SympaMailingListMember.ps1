@@ -12,6 +12,10 @@
    Remove the members jim.bob@queens.ox.ac.uk and jim.kirk@queens.ox.ac.uk from the mailing list queens-it
    
    Remove-SympaMailingListMember -Sympa $Sympa -MailingList queens-it -Member @('jim.bob@queens.ox.ac.uk','jim.kirk@queens.ox.ac.uk')
+.EXAMPLE
+   Remove all of the members from the queens-it mailling list
+
+   Get-SympaMailingListMember -Sympa $sympa -MailingList queens-it | Remove-SympaMailingListMember -Sympa $sympa -MailingList queens-it
 #>
 
 param(
