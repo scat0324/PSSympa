@@ -14,7 +14,7 @@ param(
 
     [Parameter(Mandatory=$true,HelpMessage="Pass in the result of the 'Get-SympaLogin' function")]
     $Sympa,
-    [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list(s) you want to return the member(s) of")]
+    [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list(s) you want to return the member(s) of",ValueFromPipelineByPropertyName=$True)]
     [Array]$MailingList
 
     )
