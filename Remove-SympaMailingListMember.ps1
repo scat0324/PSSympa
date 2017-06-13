@@ -20,7 +20,7 @@ param(
     $Sympa,
     [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list you want to remove the member(s) from")]
     [String]$MailingList,
-    [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to remove from the Mailling list")]
+    [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to remove from the Mailling list",ValueFromPipelineByPropertyName=$True)]
     [Array]$Member
 <#
     [Parameter(Mandatory=$false,HelpMessage="Should you notify the user that they are being removed from the list, default is no")]
@@ -37,16 +37,19 @@ param(
         Default {$Alert = "1"}
     }
 #>
-    #Loop over the member(s) and remove them from the list
-    foreach($Address in $Member){
-        try
-        {
-            $Sympa.del("$MailingList","$Address",'1')    
-        }
-        catch
-        {
+
+    Process{
+        #Loop over the member(s) and remove them from the list
+        foreach($Address in $Member){
+            try
+            {
+                Write-Verbose "Removing $Address from $MailingList"
+                $Sympa.del("$MailingList","$Address",'1')    
+            }
+            catch
+            {
             
+            }
         }
     }
-
 }
