@@ -34,7 +34,7 @@ param(
             $Item = New-Object -TypeName System.Object
 
             #Add the members to the object
-            $Item | Add-Member -MemberType NoteProperty -Name "Mailing list" -Value $MailList
+            $Item | Add-Member -MemberType NoteProperty -Name "MailingList" -Value $MailList
             $Item | Add-Member -MemberType NoteProperty -Name "Member" -Value $Result
 
             #Add the object to the collection
