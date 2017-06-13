@@ -22,7 +22,7 @@ param(
     [Parameter(Mandatory=$true,HelpMessage="Enter the name of the Mailing list you want to add the member(s) to")]
     [String]$MailingList,
 
-    [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to add to the Mailling list")]
+    [Parameter(Mandatory=$true,HelpMessage="Enter the address of the member(s) you want to add to the Mailling list",ValueFromPipelineByPropertyName=$True)]
     [Array]$Member
 <#
     [Parameter(Mandatory=$false,HelpMessage="Should you notify the user that they are being added to the list, default is no")]
@@ -41,16 +41,17 @@ param(
     }
 #>
 
-    #Loop over the member(s) and remove them from the list
-    foreach($Address in $Member){
-        try
-        {
-            $Sympa.add("$MailingList","$Address", "","1")   
-        }
-        catch
-        {
+    Process{
+        #Loop over the member(s) and add them to the list
+        foreach($Address in $Member){
+            try
+            {
+                $Sympa.add("$MailingList","$Address", "","1")   
+            }
+            catch
+            {
             
+            }
         }
     }
-
 }
