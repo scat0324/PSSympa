@@ -12,6 +12,10 @@
    Add the members jim.bob@queens.ox.ac.uk and jim.kirk@queens.ox.ac.uk to the mailing list queens-it
    
    Add-SympaMailingListMember -Sympa $Sympa -MailingList queens-it -Member @('jim.bob@queens.ox.ac.uk','jim.kirk@queens.ox.ac.uk')
+.EXAMPLE
+    Get the members from the list queens-test and add them to queens-it
+
+    Get-SympaMailingListMember -Sympa $sympa -MailingList queens-test | Add-SympaMailingListMember -Sympa $sympa -MailingList queens-it
 #>
 
 param(
@@ -46,6 +50,7 @@ param(
         foreach($Address in $Member){
             try
             {
+                Write-Verbose "Adding $Address to $MailingList"
                 $Sympa.add("$MailingList","$Address", "","1")   
             }
             catch

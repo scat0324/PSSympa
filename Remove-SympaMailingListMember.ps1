@@ -16,6 +16,10 @@
    Remove all of the members from the queens-it mailling list
 
    Get-SympaMailingListMember -Sympa $sympa -MailingList queens-it | Remove-SympaMailingListMember -Sympa $sympa -MailingList queens-it
+.Example
+   Remove members from the list queens-it as defined in a CSV
+
+   Import-Csv C:\Sympa\queens-it-memberslist.csv | Remove-SympaMailingListMember -Sympa $sympa -MailingList queens-it
 #>
 
 param(
