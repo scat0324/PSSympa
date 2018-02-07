@@ -75,7 +75,7 @@ param(
         $ToDoList = Compare-Object -ReferenceObject $ReferenceArray -DifferenceObject $ResultsArray -Property MailingList, Member
 
         if($ToDoList.Count -eq "0"){
-            Write-Host "Nothing to do"
+            Write-Verbose "Nothing to do"
         }
 
         #Perform Add/Remove
